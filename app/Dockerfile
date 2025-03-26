@@ -1,8 +1,8 @@
 FROM python:3.9
 WORKDIR /app
-COPY /app/requirements.txt .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "mainAPI.py"]
+CMD ["python", "app/mainAPI.py"]
 EXPOSE 5000
 
