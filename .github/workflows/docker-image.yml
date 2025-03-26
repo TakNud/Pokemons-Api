@@ -32,11 +32,11 @@ jobs:
     - name: export ssh key
       run: echo "${{ secrets.SSH_KEY }}" >> ssh.pem && chmod 400 ssh.pem
       
-    - name: copy yamls to machine
-      run: scp -o StrictHostKeyChecking=no -i ssh.pem kubernetes/deployment.yaml ubuntu@18.234.40.30:home/ubuntu/
+    - name: Ensure target directory exists
+      run: ssh -o StrictHostKeyChecking=no -i ssh.pem ubuntu@18.234.40.30 "mkdir -p /home/ubuntu"
 
-    - name: connect to EC2
-      run: ssh -o StrictHostKeyChecking=no -i ssh.pem ubuntu@18.234.40.30
+    - name: Copy YAMLs to EC2
+      run: scp -o StrictHostKeyChecking=no -i ssh.pem kubernetes/deployment.yaml ubuntu@18.234.40.30:/home/ubuntu/
 
-    - name: deploy with kubectl
-      run: kubectl apply -f home/ubuntu/deployment.yaml
+    - name: Deploy with kubectl
+      run: ssh -o StrictHostKeyChecking=no -i ssh.pem ubuntu@18.234.40.30 "kubectl apply -f /home/ubuntu/deployment.yaml"
