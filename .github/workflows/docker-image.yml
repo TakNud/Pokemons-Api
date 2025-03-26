@@ -33,4 +33,4 @@ jobs:
       run: echo "${{ secrets.SSH_KEY }}" >> ssh.pem && chmod 400 ssh.pem
       
     - name: connect to EC2
-      run: ssh -i ssh.pem ubuntu@18.234.40.30
+      run: ssh -o StrictHostKeyChecking=no -i ssh.pem ubuntu@18.234.40.30
