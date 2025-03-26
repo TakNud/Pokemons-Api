@@ -30,7 +30,7 @@ jobs:
       run: docker push almogso/pokemon-api
 
     - name: export ssh key
-      run: echo ${{ secrets.SSH_KEY }} >> ssh.pem 
+      run: echo "${{ secrets.SSH_KEY }}" >> ssh.pem && chmod 400 ssh.pem
       
     - name: connect to EC2
       run: ssh -i ssh.pem ubuntu@18.234.40.30
