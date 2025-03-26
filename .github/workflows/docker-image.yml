@@ -13,7 +13,6 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
     - name: checking
-      run: pwd
-      run: ls
+      run: pwd && ls
     - name: Build the Docker image
       run: docker build -f ./app/Dockerfile -t almogso/pokemon-api .
