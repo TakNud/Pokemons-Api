@@ -33,7 +33,7 @@ jobs:
       run: echo "${{ secrets.SSH_KEY }}" >> ssh.pem && chmod 400 ssh.pem
       
     - name: copy yamls to machine
-      run: scp -o StrictHostKeyChecking=no -i ssh.pem kubernetes/deployment.yaml ubuntu@18.234.40.30:home/ubuntu/deployment.yaml
+      run: scp -o StrictHostKeyChecking=no -i ssh.pem kubernetes/deployment.yaml ubuntu@18.234.40.30:home/ubuntu
 
     - name: connect to EC2
       run: ssh -o StrictHostKeyChecking=no -i ssh.pem ubuntu@18.234.40.30
