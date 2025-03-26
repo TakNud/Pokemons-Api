@@ -26,4 +26,4 @@ def save_to_csv(pokemons):
 if __name__ == "__main__":
     data = fetch_pokemon_data()
     save_to_csv(data)
-    print("Data saved to pokemons.csv 1")
+    print("Data saved to pokemons.csv 2")
