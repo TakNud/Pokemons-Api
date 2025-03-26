@@ -3,6 +3,8 @@ WORKDIR /app
 COPY /app/requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "/app/mainAPI.py"]
+RUN pwd
+RUN ls
+CMD ["python", "app/mainAPI.py"]
 EXPOSE 5000
 
